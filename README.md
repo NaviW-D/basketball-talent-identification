@@ -2,9 +2,7 @@
 
 ![لوگو](resources/logo_large.png)
 
-## توسعه‌دهنده و نگهدارنده مخزن
-**نام:** امیرعلی صالحی (AmiraliSLH)  
-**ایمیل:** amirali.salehi@icloud.com  
+# 
 
 
 ---
