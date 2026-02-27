@@ -1,56 +1,86 @@
-# پروژه ردیابی بسکتبال (BasketTracking)
 
-![لوگو](resources/logo_large.png)
+# Basketball Tracking Project (BasketTracking)
 
-# 
-
+![Logo](resources/logo_large.png)
 
 ---
 
-### معرفی پروژه
-در تیم‌های حرفه‌ای بسکتبال، تحلیل تاکتیک‌ها و آمار بازی بسیار رایج است. این پروژه با هدف بهینه‌سازی و سرعت بخشیدن به این فرآیند از طریق یک سیستم خودکار بینایی ماشین (Computer Vision) توسعه یافته است. 
+## Project Overview
 
-ما سیستمی طراحی کرده‌ایم که قادر به ردیابی حرکات و درک وقایع در بازی بسکتبال است. این سیستم با استفاده از روش‌های کلاسیک بینایی ماشین در کنار مدل‌های یادگیری عمیق مانند **Detectron2**، مسیر حرکت بازیکنان را استخراج کرده و آن‌ها را روی یک زمین استاندارد بسکتبال شبیه‌سازی (Rectify) می‌کند. همچنین این سیستم قابلیت تشخیص بازیکنی که صاحب توپ است را نیز دارد.
+In professional basketball teams, tactical analysis and game statistics are essential parts of performance evaluation. This project was developed to optimize and accelerate that process using an automated **Computer Vision** system.
 
-> **نکته:** برخی از اجزای این پروژه (مانند تشخیص توپ) با استفاده از تکنیک‌های کلاسیک CV نظیر Template Matching پیاده‌سازی شده‌اند.
+We designed a system capable of tracking player movements and understanding in-game events during a basketball match. The system combines classical computer vision techniques with deep learning models such as **Detectron2** to:
+
+* Extract player trajectories
+* Rectify player positions onto a standard basketball court (via homography transformation)
+* Identify which player is in possession of the ball
+
+> **Note:** Some components of this project (such as ball detection) are implemented using classical computer vision techniques like Template Matching.
 
 ---
 
-### پیش‌نمایش (Demo)
-ویدیو عملکرد سیستم و ردیابی بازیکنان در لینک زیر قابل مشاهده است:
-[مشاهده ویدیوی دمو](https://www.youtube.com/watch?v=PEziTgHx4cA)
+## Demo
+
+A demonstration video showcasing player tracking and system performance can be viewed here:
+
+[Watch Demo Video](https://www.youtube.com/watch?v=PEziTgHx4cA)
 
 ---
 
-### پیش‌نیازها و کتابخانه‌ها
-برای اجرای این پروژه، کتابخانه‌های زیر مورد نیاز است:
+## Requirements
+
+The following libraries are required to run this project:
 
 * **Python**
-* **OpenCV** (برای پردازش تصویر)
-* **Detectron2** (برای تشخیص اشیاء)
-* **Pytorch-Cuda** (شتاب‌دهی سخت‌افزاری)
-* **Numpy** & **Matplotlib**
+* **OpenCV** (for image processing)
+* **Detectron2** (for object detection)
+* **PyTorch + CUDA** (for hardware acceleration)
+* **NumPy** and **Matplotlib**
 
 ---
 
-### راهنمای استفاده و ساختار فایل‌ها
-سیستم از طریق فایل اصلی `main.py` اجرا می‌شود. نقش هر یک از فایل‌های کلیدی به شرح زیر است:
+## Usage Guide & Project Structure
 
-* `main.py`: مقداردهی اولیه کلاس‌ها و بارگذاری تصاویر اصلاح‌شده.
-* `video_handler.py`: مدیریت فرآیند خواندن فریم‌ها از ویدیو ورودی.
-* `rectify_court.py`: تولید Homography، اصلاح پرسپکتیو زمین و ایجاد تصاویر پانوراما.
-* `ball_detect_track.py`: تشخیص و ردیابی خودکار توپ.
-* `player_detection.py`: تشخیص و ردیابی بازیکنان.
-* `player.py`: شامل کلاس `Player` برای مدیریت ویژگی‌های هر بازیکن.
-* `tools`: توابع کمکی و جانبی.
-* `resources`: شامل تصاویر الگو (Templates) و ویدیوهای ورودی.
-
----
-
-### نصب و اجرا
-ابتدا مخزن را کلون کنید:
+The system runs through the main file:
 
 ```bash
-git clone [https://github.com/AmiraliSLH/ml-colorization-project.git](https://github.com/AmiraliSLH/ml-colorization-project.git)
+python main.py
+```
+
+### Key Files and Their Roles
+
+* `main.py`
+  Initializes classes and loads rectified images.
+
+* `video_handler.py`
+  Handles reading frames from the input video.
+
+* `rectify_court.py`
+  Generates homography matrices, corrects court perspective, and creates panoramic views.
+
+* `ball_detect_track.py`
+  Performs automatic ball detection and tracking.
+
+* `player_detection.py`
+  Detects and tracks players.
+
+* `player.py`
+  Contains the `Player` class for managing player attributes and states.
+
+* `tools/`
+  Utility and helper functions.
+
+* `resources/`
+  Contains template images and input videos.
+
+---
+
+## Installation & Execution
+
+First, clone the repository:
+
+```bash
+git clone https://github.com/NaviW-D/ml-colorization-project.git
 cd ml-colorization-project
 python main.py
+```
